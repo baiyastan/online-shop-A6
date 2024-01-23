@@ -1,9 +1,9 @@
 import React from 'react'
 import "./Button.css"
 
-function Button({title, pd}) {
+function Button({title, pd, onclick}) {
   return (
-    <button style={{padding: `16px ${pd}px`}} className='button'>{title}</button>
+    <button onClick={onclick} style={{padding: `16px ${pd}px`}} className='button'>{title}</button>
   )
 }
 

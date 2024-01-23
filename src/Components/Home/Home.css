@@ -36,8 +36,15 @@
 }
 
 .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin-top: 30px;
+}
+
+.buttonbek {
     display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }

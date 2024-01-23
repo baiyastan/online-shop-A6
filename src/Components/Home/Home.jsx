@@ -1,5 +1,6 @@
+import axios from "axios"
 import Carousel from 'react-bootstrap/Carousel';
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import mainImage from "../../assets/image/01.png"
 import Product from '../Product/Product';
@@ -21,7 +22,26 @@ const array = [
     },
 ]
 
+const API = "http://178.128.162.248:8070/api/v1/advertisement/ads/"
+
 function Home() {
+    const [product, setProduct] = useState([])
+
+    useEffect(() => {
+       const getProduct = async () => {
+            const res = await axios.get(API)    
+            // console.log(res)   
+            
+            if(res.status === 200) {
+                setProduct(res.data.results)
+            }
+       } 
+
+       getProduct()
+    }, [])
+
+    console.log(product)
+
   return (
     <div>
         <section className='home container'>
@@ -72,12 +92,15 @@ function Home() {
         <section className='home-product container'>
             <div className='products'>
                 {
-                    array.map((product) => (
+                    product.map((product) => (
                         <Product key={product.id} item={product} />
                     ))
                 }
             </div>
-            <Button title="View All Products"/>
+            <div className="buttonbek">
+
+            <Button title="View All Products" pd={48}/>
+            </div>
         </section>
     </div>
   )
