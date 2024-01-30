@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
@@ -11,6 +11,7 @@ import "./Header.css"
 
 function Header() {
   const {t, i18n} = useTranslation()
+  const [openPopup, setOpenPopup] = useState(false)
 
   let token = localStorage.getItem("accessToken")
 
@@ -65,13 +66,14 @@ function Header() {
               <img src={cart} alt='cart' />
             </Link>
             <div className='account'>
-              <img className='account-avatar' src={AccountImg} alt=''/>
+              <img onClick={() => setOpenPopup(!openPopup)} className='account-avatar' src={AccountImg} alt=''/>
 
-              <div className='account-menu'>
+              {
+                openPopup && <div className='account-menu'>
                 <div className='drop-menu'>
                   <div className='drop-item'>
                     <img src={AccounLogo} alt='account logo' />
-                    <Link>Manage My Account</Link>
+                    <Link onClick={() => setOpenPopup(!openPopup)} to="/account">Manage My Account</Link>
                   </div>
                   <div className='drop-item'>
                     <img src={AccounLogo} alt='account logo' />
@@ -91,6 +93,9 @@ function Header() {
                   </div>
                 </div>
               </div>
+              }
+
+              
             </div>
           </div>
         </div>

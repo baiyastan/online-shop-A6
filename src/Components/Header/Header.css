@@ -107,6 +107,10 @@
     position: relative;
 }
 
+.account-avatar {
+    cursor: pointer;
+}
+
 .account-menu {
     position: absolute ;
     margin-top: 10px;
@@ -115,7 +119,7 @@
     justify-content: flex-end;
     align-items: center;
     border-radius: 4px;
-    backdrop-filter: blur(75px);
+    background-color: #f4f4f4;
     right: 0;
     width: 250px;
     height: auto;
@@ -135,7 +139,7 @@
 }
 
 .drop-item a {
-    color: var(--Text, #FAFAFA);
+    color: black;
     text-align: center;
 
     /* Title/14PX Regular */
